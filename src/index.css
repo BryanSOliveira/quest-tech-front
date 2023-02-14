@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
+
+* {
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background-color: #282A36;
+  color: #fff;
+  background-image: url("./assets/images/x-top-pink.png"),
+                    url("./assets/images/x-top-green.png"),
+                    url("./assets/images/x-bot-green.png"),
+                    url("./assets/images/x-bot-pink.png");
+  background-repeat: no-repeat;
+  background-position: 100% 5%, 75% 0%, 25% 100%, 0% 95%;
+  background-attachment: fixed;
+}
+
+img {
+  max-width: 100%;
+}
+
+@media(max-width: 1200px) {
+  html, body {
+    background-image: url("./assets/images/x-top-pink.png"),
+                    url("./assets/images/x-bot-pink.png");
+  background-repeat: no-repeat;
+  background-position: 100% 5%, 0% 95%;
+  background-attachment: fixed;
+  }
+}
