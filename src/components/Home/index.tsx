@@ -4,7 +4,7 @@ import brand from '../../assets/images/brand-game.svg';
 
 function Home() {
   return (
-    <section>
+    <section className="home">
       <div>
         <img src={computer} />
       </div>
