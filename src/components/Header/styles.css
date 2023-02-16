@@ -1,40 +1,11 @@
-.main-menu {
-  display: flex;
-  list-style: none;
-  margin: 1rem;
-  justify-content: space-around;
+header {
+  font-size: xx-large
 }
 
-.menu {
-  display: flex;
-  list-style: none;
-  margin: 1rem;
-}
-
-.menu-item {
-  margin: 2rem;
-}
-
-.menu-item a {
-  text-decoration: none;
-  font-size: 32px;
+.nav-link {
   cursor: pointer;
 }
 
-.menu-item a:hover {
+.nav-link:hover {
   text-decoration: underline;
-}
-
-.text-white {
-  color: #fff;
-}
-
-.text-light-green {
-  color: #50FA7B;
-}
-
-@media(max-width: 800px) {
-  .menu {
-    flex-direction: column;
-  }
 }
