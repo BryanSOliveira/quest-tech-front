@@ -1,0 +1,17 @@
+#user-account .modal-content {
+  background-color: #383B4C;
+  border-radius: 10%;
+}
+
+#user-account .modal-header {
+  border-bottom: 2px solid #21222667;
+}
+
+#user-account input {
+  background-color:#212226;
+  color: white;
+}
+
+.text-decoration-none:hover {
+  text-decoration: underline !important;
+}
