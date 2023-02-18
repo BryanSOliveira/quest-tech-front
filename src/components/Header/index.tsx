@@ -4,7 +4,7 @@ import './styles.css';
 
 function Header() {
   return (
-    <header>
+    <header id="home">
       <nav className="navbar navbar-expand-lg navbar-dark">
         <div className="container p-2">
           <a className="navbar-brand" href="#">

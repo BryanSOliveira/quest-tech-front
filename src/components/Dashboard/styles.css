@@ -1,0 +1,17 @@
+html, body {
+  background-image: none;
+}
+
+#dashboard nav {
+  background-color: #383B4C !important;
+}
+
+#dashboard nav .bi {
+  color: #5B607B;
+}
+
+@media(max-width: 1200px) {
+  html, body {
+    background-image: none;
+  }
+}

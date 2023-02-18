@@ -1,0 +1,20 @@
+html, body {
+  background-color: #282A36;
+  background-image: url("../../assets/images/x-top-pink.png"),
+                    url("../../assets/images/x-top-green.png"),
+                    url("../../assets/images/x-bot-green.png"),
+                    url("../../assets/images/x-bot-pink.png");
+  background-repeat: no-repeat;
+  background-position: 100% 5%, 75% 0%, 25% 100%, 0% 95%;
+  background-attachment: fixed;
+}
+
+@media(max-width: 1200px) {
+  html, body {
+    background-image: url("./assets/images/x-top-pink.png"),
+                    url("./assets/images/x-bot-pink.png");
+  background-repeat: no-repeat;
+  background-position: 100% 5%, 0% 95%;
+  background-attachment: fixed;
+  }
+}

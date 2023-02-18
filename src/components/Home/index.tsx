@@ -4,8 +4,22 @@ import brandGame from '../../assets/images/brand-game.svg';
 import './styles.css';
 import Header from '../Header';
 import Modal from '../Modal';
+import { useContext, useEffect } from 'react';
+import { UserContext } from '../../contexts/context';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
+
+  const navigate = useNavigate();
+
+  const { user, setUser }: any = useContext(UserContext);
+
+  useEffect(() => {
+    if (user || sessionStorage.getItem("authenticatedUser")) {
+      navigate("/dashboard");
+    }
+  }, []);
+
   return (
     <>
       <Header />
