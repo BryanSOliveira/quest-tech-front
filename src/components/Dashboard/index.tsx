@@ -7,8 +7,9 @@ function Dashboard() {
   const { user, setUser }: any = useContext(UserContext);
 
   useEffect(() => {
-    if (!user && sessionStorage.getItem("authenticatedUser")) {
-      setUser(JSON.parse(sessionStorage.getItem("authenticatedUser") || ""));
+    if (!user && (sessionStorage.getItem("authenticatedUser") || localStorage.getItem("authenticatedUser"))) {
+      const userStorage = sessionStorage.getItem("authenticatedUser") || localStorage.getItem("authenticatedUser");
+      setUser(userStorage);
     }
   }, []);
 

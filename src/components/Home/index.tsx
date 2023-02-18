@@ -6,17 +6,16 @@ import Header from '../Header';
 import Modal from '../Modal';
 import { useContext, useEffect } from 'react';
 import { UserContext } from '../../contexts/context';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Home() {
-
-  const navigate = useNavigate();
 
   const { user, setUser }: any = useContext(UserContext);
 
   useEffect(() => {
-    if (user || sessionStorage.getItem("authenticatedUser")) {
-      navigate("/dashboard");
+    if (!user && (sessionStorage.getItem("authenticatedUser") || localStorage.getItem("authenticatedUser"))) {
+      const userStorage = sessionStorage.getItem("authenticatedUser") || localStorage.getItem("authenticatedUser");
+      setUser(userStorage);
     }
   }, []);
 
@@ -33,9 +32,15 @@ function Home() {
             <p className="text-center lead my-5 text-white">
               Venha testar e exercitar seu conhecimento <br /> fazendo nossos quizzes da área de tecnologia
             </p>
-            <button type="button" className="btn btn-success btn-success-custom" data-bs-toggle="modal" data-bs-target="#user-account">
-              JOGAR AGORA
-            </button>
+              { user ? (
+                <Link to="/dashboard" className="btn btn-success">
+                  JOGAR AGORA
+                </Link>
+              ) : (
+                <button type="button" className="btn btn-success" data-bs-toggle="modal" data-bs-target="#user-account">
+                  JOGAR AGORA
+                </button>
+              )}
           </div>
         </section>
       </main>
