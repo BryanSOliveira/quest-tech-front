@@ -14,7 +14,7 @@ function Home() {
 
   useEffect(() => {
     if (!user && (sessionStorage.getItem("authenticatedUser") || localStorage.getItem("authenticatedUser"))) {
-      const userStorage = sessionStorage.getItem("authenticatedUser") || localStorage.getItem("authenticatedUser");
+      const userStorage = JSON.parse(sessionStorage.getItem("authenticatedUser") || localStorage.getItem("authenticatedUser") || "");
       setUser(userStorage);
     }
   }, []);
@@ -32,15 +32,15 @@ function Home() {
             <p className="text-center lead my-5 text-white">
               Venha testar e exercitar seu conhecimento <br /> fazendo nossos quizzes da área de tecnologia
             </p>
-              { user ? (
-                <Link to="/dashboard" className="btn btn-success">
-                  JOGAR AGORA
-                </Link>
-              ) : (
-                <button type="button" className="btn btn-success" data-bs-toggle="modal" data-bs-target="#user-account">
-                  JOGAR AGORA
-                </button>
-              )}
+            {user ? (
+              <Link to="/dashboard" className="btn btn-success">
+                JOGAR AGORA
+              </Link>
+            ) : (
+              <button type="button" className="btn btn-success" data-bs-toggle="modal" data-bs-target="#user-account">
+                JOGAR AGORA
+              </button>
+            )}
           </div>
         </section>
       </main>

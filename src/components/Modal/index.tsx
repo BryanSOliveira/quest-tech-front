@@ -22,12 +22,12 @@ function Modal({ id }: Props) {
 
       sendPostLogin(username, password).then(response => {
         const user = response?.data;
-
-        sessionStorage.setItem("authenticatedUser", JSON.stringify(user));
         setUser(user);
 
-        if(keepConnected) {
+        if (keepConnected) {
           localStorage.setItem("authenticatedUser", JSON.stringify(user));
+        } else {
+          sessionStorage.setItem("authenticatedUser", JSON.stringify(user));
         }
 
         if (buttonCloseModal.current) {
