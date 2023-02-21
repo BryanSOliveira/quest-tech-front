@@ -21,20 +21,22 @@ function Modal({ id }: Props) {
       setLoading(true);
 
       sendPostLogin(username, password).then(response => {
-        const user = response?.data;
-        setUser(user);
+        if (response && response.status === 200) {
+          const user = response?.data;
+          setUser(user);
 
-        if (keepConnected) {
-          localStorage.setItem("authenticatedUser", JSON.stringify(user));
-        } else {
-          sessionStorage.setItem("authenticatedUser", JSON.stringify(user));
+          if (keepConnected) {
+            localStorage.setItem("authenticatedUser", JSON.stringify(user));
+          } else {
+            sessionStorage.setItem("authenticatedUser", JSON.stringify(user));
+          }
+
+          if (buttonCloseModal.current) {
+            buttonCloseModal.current.click();
+          }
+
+          navigate("/dashboard");
         }
-
-        if (buttonCloseModal.current) {
-          buttonCloseModal.current.click();
-        }
-
-        navigate("/dashboard");
       })
         .catch(error => {
           console.log(error);
@@ -48,8 +50,10 @@ function Modal({ id }: Props) {
   const register = (personName: string, userEmail: string, username: string, password: string) => {
     setLoading(true);
 
-    sendPostRegister(personName, userEmail, username, password).finally(() => {
-      login(username, password);
+    sendPostRegister(personName, userEmail, username, password).then((response) => {
+      if (response && response.status === 201) {
+        login(username, password);
+      }
     });
   };
 
