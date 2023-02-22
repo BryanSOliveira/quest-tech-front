@@ -1,12 +1,16 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../contexts/context';
 
 import iconArea from '../../assets/images/area-1.svg';
 
 import './styles.css';
+import { sendGetGameModes } from '../../Requests/gameModeRequest';
+import { gameMode } from '../../models/gameMode';
+import Header from '../HeaderDashboard';
 
 function Dashboard() {
 
+  const [gameModes, setGameModes] = useState<gameMode[]>([]);
   const { user, setUser }: any = useContext(UserContext);
 
   useEffect(() => {
@@ -14,68 +18,41 @@ function Dashboard() {
       const userStorage = JSON.parse(sessionStorage.getItem("authenticatedUser") || localStorage.getItem("authenticatedUser") || "");
       setUser(userStorage);
     }
+
+    if (gameModes.length === 0) {
+      sendGetGameModes().then(response => {
+        if (response && response.status === 200) {
+          setGameModes(response.data);
+        }
+      });
+    }
   }, []);
 
   return (
     <>
-      <header id="dashboard">
-        <nav className="navbar navbar-expand-lg navbar-light p-4">
-          <div className="container">
-            <div className="d-flex flex-grow-1 justify-content-between" id="navbarNav">
-              <ul className="navbar-nav align-items-center">
-                <li className="nav-item me-3">
-                  <i className="bi bi-person-circle display-6"></i>
-                </li>
-                <li className="nav-item position-relative p-4">
-                  {user && user.player && user.player.level &&
-                    <span className="position-absolute top-0 text-white">
-                      Nível {user.player.level}
-                    </span>
-                  }
-                  <div className="progress mt-2" style={{ width: "15rem" }}>
-                    <div className="progress-bar bg-success" role="progressbar" style={{ width: "25%" }} aria-valuenow={25} aria-valuemin={0} aria-valuemax={100}></div>
+      <Header user={user} />
+      <section className="container">
+        <h2 className="text-white my-4">
+          <span className="text-secondary">|</span> Quizzes
+        </h2>
+        <div className="d-flex flex-wrap justify-content-lg-between justify-content-center row">
+          {
+            gameModes.map(mode => {
+              return (
+                <div key={mode.id} className="col-md-4">
+                  <div className="card m-2">
+                    <div className="p-3">
+                      <h5 className="card-title fw-bold">{mode.name}</h5>
+                    </div>
+                    <img src={iconArea} className="card-img-top img-fluid" alt="Imagem ilustrativa da área" />
+                    <div className="card-body d-flex justify-content-center p-4">
+                      <a href="#" type="button" className="text-decoration-none text-secondary">JOGAR</a>
+                    </div>
                   </div>
-                </li>
-              </ul>
-              <ul className="navbar-nav align-items-center">
-                <li className="nav-item">
-                  <span className="bi bi-list display-6" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style={{ cursor: 'pointer' }}>
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </header>
-
-      <section className="container p-4 d-flex flex-wrap justify-content-center">
-        <div className="card m-4" style={{ width: "30rem" }}>
-          <img src={iconArea} className="card-img-top img-thumbnail" alt="Imagem ilustrativa da área" />
-          <div className="card-body d-flex justify-content-between align-items-center p-4">
-            <h5 className="card-title fw-bold">Programação</h5>
-            <a href="#" className="btn btn-secondary">JOGAR</a>
-          </div>
-        </div>
-        <div className="card m-4" style={{ width: "30rem" }}>
-          <img src={iconArea} className="card-img-top img-thumbnail" alt="Imagem ilustrativa da área" />
-          <div className="card-body d-flex justify-content-between align-items-center p-4">
-            <h5 className="card-title fw-bold">Segurança da informação</h5>
-            <a href="#" className="btn btn-secondary">JOGAR</a>
-          </div>
-        </div>
-        <div className="card m-4" style={{ width: "30rem" }}>
-          <img src={iconArea} className="card-img-top img-thumbnail" alt="Imagem ilustrativa da área" />
-          <div className="card-body d-flex justify-content-between align-items-center p-4">
-            <h5 className="card-title fw-bold">Banco de Dados</h5>
-            <a href="#" className="btn btn-secondary">JOGAR</a>
-          </div>
-        </div>
-        <div className="card m-4" style={{ width: "30rem" }}>
-          <img src={iconArea} className="card-img-top img-thumbnail" alt="Imagem ilustrativa da área" />
-          <div className="card-body d-flex justify-content-between align-items-center p-4">
-            <h5 className="card-title fw-bold">Redes</h5>
-            <a href="#" className="btn btn-secondary">JOGAR</a>
-          </div>
+                </div>
+              )
+            })
+          }
         </div>
       </section>
 

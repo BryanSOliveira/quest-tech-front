@@ -2,7 +2,7 @@ import computer from '../../assets/images/computer.svg';
 import brandGame from '../../assets/images/brand-game.svg';
 
 import './styles.css';
-import Header from '../Header';
+import Header from '../HeaderHome';
 import Modal from '../Modal';
 import { useContext, useEffect } from 'react';
 import { UserContext } from '../../contexts/context';
