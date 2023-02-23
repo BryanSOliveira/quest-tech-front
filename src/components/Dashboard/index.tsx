@@ -6,7 +6,6 @@ import iconArea from '../../assets/images/area-1.svg';
 import './styles.css';
 import { sendGetGameModes } from '../../Requests/gameModeRequest';
 import { gameMode } from '../../models/gameMode';
-import Header from '../HeaderDashboard';
 
 function Dashboard() {
 
@@ -30,7 +29,6 @@ function Dashboard() {
 
   return (
     <>
-      <Header user={user} />
       <section className="container">
         <h2 className="text-white my-4">
           <span className="text-secondary">|</span> Quizzes

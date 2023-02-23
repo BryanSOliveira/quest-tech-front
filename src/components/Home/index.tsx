@@ -2,8 +2,8 @@ import computer from '../../assets/images/computer.svg';
 import brandGame from '../../assets/images/brand-game.svg';
 
 import './styles.css';
-import Header from '../HeaderHome';
-import Modal from '../Modal';
+import Header from '../HomeHeader';
+import Modal from '../AccountModal';
 import { useContext, useEffect } from 'react';
 import { UserContext } from '../../contexts/context';
 import { Link, useNavigate } from 'react-router-dom';
@@ -21,7 +21,6 @@ function Home() {
 
   return (
     <>
-      <Header />
       <main>
         <section className="container d-flex justify-content-around p-5 mt-5">
           <img src={computer} alt="Computer" className="w-25 flex-fill img-fluid" />

@@ -1,10 +1,16 @@
-import { user } from "../../models/user";
+import { useContext, useEffect } from "react";
+import { UserContext } from "../../contexts/context";
 
-type Props = {
-  user : user;
-};
+function Header() {
+  const { user, setUser }: any = useContext(UserContext);
 
-function Header({ user }: Props) {
+  useEffect(() => {
+    if (!user && (sessionStorage.getItem("authenticatedUser") || localStorage.getItem("authenticatedUser"))) {
+      const userStorage = JSON.parse(sessionStorage.getItem("authenticatedUser") || localStorage.getItem("authenticatedUser") || "");
+      setUser(userStorage);
+    }
+  }, []);
+
   return (
     <header id="dashboard">
       <nav className="navbar navbar-expand-lg navbar-light p-4">
