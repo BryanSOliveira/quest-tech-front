@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { RouterProvider } from "react-router-dom";
 import { UserContext } from './contexts/context';
-import router from './Routes/routes';
+import router from './routes/routes';
 
 import './index.css';
 

@@ -2,22 +2,14 @@ import computer from '../../assets/images/computer.svg';
 import brandGame from '../../assets/images/brand-game.svg';
 
 import './styles.css';
-import Header from '../HomeHeader';
-import Modal from '../AccountModal';
+import Modal from '../../components/AccountModal';
 import { useContext, useEffect } from 'react';
 import { UserContext } from '../../contexts/context';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Home() {
 
-  const { user, setUser }: any = useContext(UserContext);
-
-  useEffect(() => {
-    if (!user && (sessionStorage.getItem("authenticatedUser") || localStorage.getItem("authenticatedUser"))) {
-      const userStorage = JSON.parse(sessionStorage.getItem("authenticatedUser") || localStorage.getItem("authenticatedUser") || "");
-      setUser(userStorage);
-    }
-  }, []);
+  const { user }: any = useContext(UserContext);
 
   return (
     <>

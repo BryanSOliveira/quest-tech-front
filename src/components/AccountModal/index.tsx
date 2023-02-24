@@ -1,8 +1,8 @@
 import { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/context";
-import sendPostLogin from "../../Requests/loginRequest";
-import sendPostRegister from "../../Requests/registerRequest";
+import sendPostLogin from "../../requests/loginRequest";
+import sendPostRegister from "../../requests/registerRequest";
 
 import './styles.css';
 
