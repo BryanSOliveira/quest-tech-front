@@ -38,7 +38,7 @@ function Modal({ id }: Props) {
           navigate("/dashboard");
         }
       })
-        .catch(error => {
+        .catch((error: any) => {
           console.log(error);
         })
         .finally(() => {
