@@ -1,8 +1,8 @@
 import { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/context";
-import sendPostLogin from "../../requests/loginRequest.js";
-import sendPostRegister from "../../requests/registerRequest.js";
+import sendPostLogin from "../../requests/loginRequest";
+import sendPostRegister from "../../requests/registerRequest";
 
 import './styles.css';
 
@@ -50,7 +50,7 @@ function Modal({ id }: Props) {
   const register = (personName: string, userEmail: string, username: string, password: string) => {
     setLoading(true);
 
-    sendPostRegister(personName, userEmail, username, password).then((response) => {
+    sendPostRegister(personName, userEmail, username, password).then((response: any) => {
       if (response && response.status === 201) {
         login(username, password);
       }
