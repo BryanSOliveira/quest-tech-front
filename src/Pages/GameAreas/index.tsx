@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../contexts/context";
 import { gameArea } from "../../models/gameArea";
-import { sendGetGameAreas } from "../../requests/gameAreaRequest";
+import { sendGetGameAreas } from "../../requests/gameAreaRequest.js";
 
 import iconArea from '../../assets/images/area-1.svg';
 import { Link, useLocation } from "react-router-dom";
@@ -15,7 +15,7 @@ function GameAreas() {
 
   useEffect(() => {
     if (gameAreas.length === 0) {
-      sendGetGameAreas().then(response => {
+      sendGetGameAreas().then((response: any) => {
         if (response && response.status === 200) {
           setGameAreas(response.data);
         }

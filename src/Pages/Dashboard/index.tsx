@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import iconArea from '../../assets/images/area-1.svg';
 
 import './styles.css';
-import { sendGetGameModes } from '../../requests/gameModeRequest';
+import { sendGetGameModes } from '../../requests/gameModeRequest.js';
 import { gameMode } from '../../models/gameMode';
 import { Link } from 'react-router-dom';
 
@@ -13,7 +13,7 @@ function Dashboard() {
 
   useEffect(() => {
     if (gameModes.length === 0) {
-      sendGetGameModes().then(response => {
+      sendGetGameModes().then((response: any) => {
         if (response && response.status === 200) {
           setGameModes(response.data);
         }

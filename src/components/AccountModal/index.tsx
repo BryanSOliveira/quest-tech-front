@@ -1,8 +1,8 @@
 import { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/context";
-import sendPostLogin from "../../requests/loginRequest";
-import sendPostRegister from "../../requests/registerRequest";
+import sendPostLogin from "../../requests/loginRequest.js";
+import sendPostRegister from "../../requests/registerRequest.js";
 
 import './styles.css';
 
@@ -20,7 +20,7 @@ function Modal({ id }: Props) {
     if (username && password) {
       setLoading(true);
 
-      sendPostLogin(username, password).then(response => {
+      sendPostLogin(username, password).then((response: any) => {
         if (response && response.status === 200) {
           const user = response?.data;
           setUser(user);
