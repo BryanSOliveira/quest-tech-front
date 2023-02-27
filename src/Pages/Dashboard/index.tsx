@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import iconArea from '../../assets/images/area-1.svg';
 
 import './styles.css';
-import { sendGetGameModes } from '../../requests/gameModeRequest';
+import { sendGetGameModes } from './../../requests/gameModeRequest';
 import { gameMode } from '../../models/gameMode';
 import { Link } from 'react-router-dom';
 
