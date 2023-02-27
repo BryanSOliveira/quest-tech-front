@@ -1,10 +1,10 @@
 import axios from "axios";
 import { BASE_URL } from "../utils/request";
 
-const sendPostLogin = async (username: string, password: string) => {
+const sendPostLogin = (username: string, password: string) => {
   if (username && password) {
     try {
-      const response = await axios.post(`${BASE_URL}/login`, {
+      const response = axios.post(`${BASE_URL}/login`, {
         username,
         password
       });
