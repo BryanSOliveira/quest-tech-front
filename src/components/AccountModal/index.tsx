@@ -1,7 +1,7 @@
 import { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/context";
-import sendPostLogin from "../../requests/login";
+import sendPostLogin from "../../requests/loginRequest";
 import sendPostRegister from "../../requests/registerRequest";
 
 import './styles.css';
