@@ -39,7 +39,7 @@ function Dashboard() {
                   <div className="card-body d-flex justify-content-center p-4">
                     {mode.singleplayer ? (
                       <Link to="/singleplayer" state={{gameMode: mode}}  className="text-decoration-none text-secondary">
-                        JOGAR (is singleplayer)
+                        JOGAR
                       </Link>
                     ) : (
                       <a href="#" type="button" className="text-decoration-none text-secondary">JOGAR</a>
